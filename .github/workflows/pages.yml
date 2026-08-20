@@ -1,4 +1,4 @@
-name: Refresh private storage monitor
+name: Refresh storage monitor
 
 on:
   workflow_dispatch:
