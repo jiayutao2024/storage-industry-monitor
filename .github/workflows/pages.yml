@@ -1,0 +1,78 @@
+name: Refresh private storage monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 05:00 and 17:00 Asia/Shanghai = 21:00 and 09:00 UTC.
+    - cron: "0 9,21 * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - "web/**"
+      - "scripts/**"
+      - "storage_intel/scripts/**"
+      - "storage_intel/config/**"
+      - "data/storage_research.json"
+      - ".github/workflows/pages.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: storage-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Refresh storage news and global company quotes
+        run: python storage_intel/scripts/run_storage_intel.py --hours 36 --target-news 8 --max-news 10
+
+      - name: Refresh public storage prices
+        run: python scripts/collect_storage_prices.py --project-root .
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v && python -m unittest discover -s storage_intel/tests -v
+
+      - name: Build standalone site
+        run: python scripts/build_site.py --project-root .
+
+      - name: Persist histories and latest public snapshots
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- storage_intel/data/news.jsonl storage_intel/data/translations.json storage_intel/data/market_history.jsonl data/storage_price_history.jsonl data/storage_prices_latest.json
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "data: refresh storage monitor"
+            git push origin HEAD:main
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

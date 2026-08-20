@@ -1,0 +1,9 @@
+_site/
+**/__pycache__/
+*.py[cod]
+storage_intel/output/
+storage_intel/logs/
+storage_intel/inbox/*.csv
+!storage_intel/inbox/*_template.csv
+.edge-profile*/
+qa_*.png

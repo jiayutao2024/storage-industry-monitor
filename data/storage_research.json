@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "version": "2026-08-20",
+    "model_name": "G3 存储供需与投资信号模型",
+    "model_path": "暑期答辩存储/03_model/G3_存储供需与投资信号模型.xlsx",
+    "boundary": "公开网站仅展示公开事实、第三方统计与研究测算；付费数据库与内部调研不发布。"
+  },
+  "horizons": [
+    {"id":"short","label":"短期 0–3个月","state":"价格与库存验证","question":"涨价能否从现货扩散至合约价，并转化为原厂盈利改善？","signals":["同规格现货/合约价斜率","原厂与渠道库存天数","交期与配货","业绩指引"]},
+    {"id":"medium","label":"中期 3–24个月","state":"AI结构增量与供给约束","question":"HBM、服务器DRAM与eSSD的增量能否快于有效bit供给？","signals":["HBM wafer input share","eSSD收入/bit占比","需求bit与有效供给bit","新厂设备搬入和良率"]},
+    {"id":"long","label":"长期 2–5年","state":"国产化与价值池迁移","question":"两长能否把份额、技术和资本开支转化为高价值产品与现金流？","signals":["DDR5/LPDDR5X客户层级","eSSD发布→验证→量产","设备材料验证转批量","单位bit成本与Capex效率"]}
+  ],
+  "models": {
+    "years": [2025,2026,2027,2028,2029,2030],
+    "dram": {
+      "base": {"demand_growth":[null,20,18,16,14,13],"supply_growth":[null,17,16,18,19,18],"demand_index":[100,120,141.6,164.3,187.3,211.7],"supply_index":[100,117,135.7,160.1,190.5,224.8],"gap_pct":[0,-2.5,-4.2,-2.5,1.8,6.3]},
+      "bear": {"demand_growth":[null,16,14,12,10,9],"supply_growth":[null,18,19,20,20,18]},
+      "bull": {"demand_growth":[null,24,22,19,17,15],"supply_growth":[null,15,14,16,18,18]},
+      "base_condition":"AI服务器与单机容量延续增长；HBM晶圆投入挤占；新产能主要在2028年后改善。"
+    },
+    "nand": {
+      "base": {"demand_growth":[null,20,21,20,18,17],"supply_growth":[null,15,27,23,20,18],"demand_index":[100,120,145.2,174.2,205.6,240.6],"supply_index":[100,115,146.1,179.7,215.6,254.4],"gap_pct":[0,-4.2,0.6,3.1,4.9,5.7]},
+      "bear": {"demand_growth":[null,16,15,14,13,12],"supply_growth":[null,19,27,25,23,20]},
+      "bull": {"demand_growth":[null,24,25,22,20,18],"supply_growth":[null,14,20,20,19,18]},
+      "base_condition":"2026年总量短缺约4%–5%；2027年制程迁移和国产增量使总量在下半年趋平，但eSSD仍可能结构性偏紧。"
+    },
+    "formula":"需求指数=上年需求指数×(1+需求bit增速)；供给指数=上年供给指数×(1+有效bit供给增速)；缺口=(供给-需求)/需求，负值代表短缺。",
+    "effective_bit":"有效bit = WPM × OEE/利用率 × good die/wafer × 容量/die × 产品良率"
+  },
+  "structural_data": {
+    "hbm_wafer_input": {"years":[2025,2026,2027],"share_pct":[18,22,30],"label":"HBM占前三大DRAM厂wafer input","status":"第三方预测","source_id":"S03"},
+    "dram_share_q1_2026": {"labels":["Samsung","SK hynix","Micron","CXMT","Nanya","Others"],"values":[38,29,22,8,2,1],"unit":"收入份额%","status":"第三方统计","source_id":"S08"},
+    "hbm_share_q1_2026": {"labels":["SK hynix","Samsung","Micron"],"values":[58,21,21],"unit":"收入份额%","status":"第三方统计","source_id":"S08"},
+    "nand_share_q1_2026": {"labels":["Samsung","SK Group","Kioxia","Micron","SanDisk","Others"],"values":[31.6,17.6,13.9,13.9,13.9,9.1],"unit":"收入份额%","status":"第三方统计","source_id":"S09"},
+    "enterprise_ssd": {"periods":["2026Q1","2026E"],"revenue_share_pct":[43,60],"status":"第三方统计/预测","source_id":"S04"}
+  },
+  "capacity_timeline": [
+    {"date":"2026","company":"全球原厂","milestone":"资本开支与设备订单增加","meaning":"不等于当期有效供给；先观察设备搬入、验收、良率与产品认证。","status":"观察"},
+    {"date":"2027H2","company":"NAND行业","milestone":"基准情景总量趋于平衡","meaning":"高端eSSD仍可能因控制器、固件、QoS与客户认证而结构性紧张。","status":"模型"},
+    {"date":"2028+","company":"DRAM行业","milestone":"新增产能贡献开始更明显","meaning":"2026–2027供给增量更多来自节点迁移、利用率和产品组合，而非新厂满产。","status":"模型"},
+    {"date":"2029H1","company":"SK hynix","milestone":"M17目标投产","meaning":"大型新增NAND基地距离形成有效bit仍有建设和爬坡周期。","status":"公司公告"}
+  ],
+  "product_tree": [
+    {"family":"易失性存储","products":["SRAM","DRAM","DDR4/DDR5/DDR6","LPDDR5X/LPDDR6","GDDR6/7","HBM3E/4"],"drivers":"AI训练/推理、服务器单机容量、带宽与能效"},
+    {"family":"非易失性半导体","products":["3D NAND","Client SSD","Enterprise SSD","eMMC/UFS","NOR Flash"],"drivers":"AI数据湖、KV Cache、企业级认证、终端容量"},
+    {"family":"其他介质与互连","products":["HDD","磁带","CXL内存扩展","SCM/MRAM/ReRAM"],"drivers":"冷温热数据分层、容量成本、延迟与持久性"},
+    {"family":"设备材料与服务","products":["前道设备","材料/零部件","封测","主控/接口","模组/分销"],"drivers":"资本开支、国产验证、订单与收入确认"}
+  ],
+  "companies": [
+    {"name":"长鑫科技","ticker":"688825","region":"国内","layer":"DRAM原厂","exposure":"DRAM / DDR5 / LPDDR5X","winner_traits":"先进制程量产、客户层级、产品结构与资本纪律","signals":"DDR5/LPDDR5X收入占比；服务器客户；有效bit；扩产折旧","role":"核心成长+周期"},
+    {"name":"长江存储","ticker":"未上市","region":"国内","layer":"NAND原厂","exposure":"3D NAND / SSD","winner_traits":"高密度TLC/QLC、控制器固件、企业级认证","signals":"eSSD发布→送样→验证→量产；收入份额；单位bit成本","role":"产业观察/上游映射"},
+    {"name":"澜起科技","ticker":"688008","region":"国内","layer":"接口/主控","exposure":"DDR5接口 / CXL","winner_traits":"代际升级、平台认证、服务器客户覆盖","signals":"DDR5渗透；MRDIMM/CXL放量；新品收入","role":"结构成长"},
+    {"name":"江波龙","ticker":"301308","region":"国内","layer":"模组/品牌","exposure":"SSD / 嵌入式存储","winner_traits":"产品组合、库存管理、企业级能力","signals":"库存成本；毛利；企业级收入；原料传导","role":"结构+周期"},
+    {"name":"佰维存储","ticker":"688525","region":"国内","layer":"模组/品牌","exposure":"SSD / 嵌入式存储","winner_traits":"先进封装、客户与产品结构、库存管理","signals":"AI端侧产品；毛利；库存；客户验证","role":"高弹性卫星"},
+    {"name":"北方华创","ticker":"002371","region":"国内","layer":"前道设备","exposure":"刻蚀/沉积等平台设备","winner_traits":"进入两长验证并转批量、平台化能力","signals":"设备搬入；验收；存储订单；收入确认","role":"胜率型配置"},
+    {"name":"拓荆科技","ticker":"688072","region":"国内","layer":"前道设备","exposure":"薄膜沉积","winner_traits":"工艺覆盖、客户验证、份额提升","signals":"验证转批量；订单；验收周期","role":"胜率型配置"},
+    {"name":"盛美上海","ticker":"688082","region":"国内","layer":"前道设备","exposure":"清洗/电镀等","winner_traits":"多工艺平台、客户渗透与服务能力","signals":"两长订单；设备验收；收入占比","role":"胜率型配置"}
+  ],
+  "signal_framework": [
+    {"layer":"需求","metric":"AI服务器出货与CSP资本开支","frequency":"季度","bull":"出货/资本开支预期上修","bear":"下修或机柜交付延迟","lead":"领先"},
+    {"layer":"需求","metric":"HBM单卡容量与wafer input share","frequency":"代际/季度","bull":"容量和晶圆投入继续上升","bear":"容量增速或良率约束显著缓解","lead":"领先"},
+    {"layer":"需求","metric":"eSSD占NAND收入/bit份额","frequency":"季度","bull":"收入份额升且高容量产品放量","bear":"仅价格上涨而bit停滞","lead":"同步"},
+    {"layer":"供给","metric":"有效bit供给增速","frequency":"季度","bull":"低于需求增速","bear":"持续高于需求增速","lead":"同步"},
+    {"layer":"供给","metric":"新厂设备搬入与量产爬坡","frequency":"月/季度","bull":"搬入推迟或良率爬坡慢","bear":"提前爬坡并稳定量产","lead":"领先"},
+    {"layer":"价格","metric":"DRAM/NAND合约价与现货价差","frequency":"周/月","bull":"合约价持续上行且现货跟涨","bear":"现货先跌且库存天数升","lead":"同步"},
+    {"layer":"库存","metric":"原厂/模组/渠道库存天数","frequency":"季度/月","bull":"原厂低库存且渠道健康","bear":"渠道累库、原厂库存回升","lead":"领先"},
+    {"layer":"国产","metric":"产品证据阶段","frequency":"事件","bull":"发布→送样→验证→合同→量产连续升级","bear":"长期停留在发布或传闻","lead":"领先"}
+  ],
+  "sources": [
+    {"id":"S01","title":"NAND供给缺口与2027H2转平","publisher":"TrendForce","date":"2026-07-21","url":"https://www.trendforce.com/presscenter/news/20260721-13148.html","tier":2,"use":"NAND模型校准"},
+    {"id":"S03","title":"HBM占DRAM wafer input 18%/22%/30%","publisher":"TrendForce","date":"2026-06-02","url":"https://www.trendforce.com/presscenter/news/20260602-13074.html","tier":2,"use":"DRAM有效供给挤占"},
+    {"id":"S04","title":"NAND revenues record high from AI demand","publisher":"Counterpoint","date":"2026-06-02","url":"https://counterpointresearch.com/en/insights/nand-revenues-record-high-q1-2026-from-ai-demand","tier":2,"use":"eSSD价值池与国产份额"},
+    {"id":"S05","title":"M17 NAND投资计划","publisher":"SK hynix","date":"2026-07-02","url":"https://news.skhynix.com/en/fact-07/","tier":1,"use":"新增产能时点"},
+    {"id":"S06","title":"长鑫科技招股书","publisher":"上海证券交易所","date":"2026-05-27","url":"https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002170_20260527_23QQ.pdf","tier":1,"use":"产品、份额与扩产"},
+    {"id":"S08","title":"Global DRAM revenue and shares Q1 2026","publisher":"Counterpoint","date":"2026-05-26","url":"https://counterpointresearch.com/en/insights/global-dram-revenue-surges-to-near-dollar-100-billion-mark-in-q1-2026","tier":2,"use":"DRAM/HBM格局"},
+    {"id":"S09","title":"NAND Flash revenue ranking Q1 2026","publisher":"TrendForce","date":"2026-05","url":"https://www.trendforce.com/","tier":2,"use":"NAND格局"}
+  ]
+}
