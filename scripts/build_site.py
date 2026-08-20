@@ -125,10 +125,10 @@ def main() -> int:
                        "volume": None, "currency": "", "trade_date": "", "exchange": "", "source_url": ""})
     daily["market"] = market
     homepage_market = [row for row in market if row.get("homepage")]
-    core_order = ["005930.KS", "MU", "000660.KS", "285A.T", "SNDK", "CXMT", "YMTC"]
+    core_order = ["005930.KS", "MU", "000660.KS", "285A.T", "SNDK", "688825.SS", "YMTC"]
     by_symbol = {row.get("symbol"): row for row in homepage_market}
     homepage_market = [by_symbol[symbol] for symbol in core_order if symbol in by_symbol]
-    entity_alias = {"CXMT": {"CXMT", "ChangXin Memory Technologies"}, "YMTC": {"YMTC", "Yangtze Memory Technologies"}}
+    entity_alias = {"688825.SS": {"CXMT", "ChangXin Memory Technologies", "长鑫科技"}, "YMTC": {"YMTC", "Yangtze Memory Technologies"}}
     for row in homepage_market:
         if row.get("listed"):
             change = row.get("change_pct")
@@ -138,6 +138,9 @@ def main() -> int:
             aliases = entity_alias.get(row.get("symbol"), {row.get("symbol")})
             count = sum(bool(set(event.get("entities", [])) & aliases) for event in events[:120])
             row["daily_note"] = f"未上市；近阶段事件库收录{count}条相关动态，重点看产品验证与量产证据。"
+
+    core_history_symbols = {"005930.KS", "000660.KS", "MU", "285A.T", "SNDK", "688825.SS"}
+    core_market_history = [row for row in market_history if row.get("symbol") in core_history_symbols]
 
     payload = {
         "meta": {
@@ -160,7 +163,9 @@ def main() -> int:
             "price_meta": prices.get("meta", {}), "daily": daily,
             "homepage_market": homepage_market,
             "market_universe": universe_rows,
-            "market_history": market_history,
+            # Keep the interactive payload lean; the complete listed-company panel
+            # remains available from api/market-history.json for download/reuse.
+            "market_history": core_market_history,
             "chain": ["终端/AI需求", "bit需求", "库存", "有效供给", "价格", "收入/毛利", "Capex", "设备材料订单"],
         },
     }

@@ -628,11 +628,12 @@ def update_market_history(path: Path, quotes: list[dict[str, Any]]) -> list[dict
                 continue
             try:
                 row = json.loads(line)
-                existing[(row.get("symbol", ""), row.get("trade_date", ""))] = row
+                if float(row.get("price") or 0) > 0:
+                    existing[(row.get("symbol", ""), row.get("trade_date", ""))] = row
             except json.JSONDecodeError:
                 continue
     for row in quotes:
-        if row.get("listed") and row.get("trade_date"):
+        if row.get("listed") and row.get("trade_date") and float(row.get("price") or 0) > 0:
             existing[(row["symbol"], row["trade_date"])] = {
                 key: row.get(key) for key in (
                     "symbol", "name", "short_name", "category", "role", "region", "icon",

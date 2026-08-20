@@ -7,3 +7,5 @@ storage_intel/inbox/*.csv
 !storage_intel/inbox/*_template.csv
 .edge-profile*/
 qa_*.png
+qa/
+.qa_server_pid

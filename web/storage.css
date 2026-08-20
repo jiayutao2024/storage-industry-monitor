@@ -41,3 +41,7 @@
 @media(max-width:1350px){.company-pulse-grid{grid-template-columns:repeat(4,1fr)}.company-universe{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.storage-shell{grid-template-columns:minmax(0,1fr);gap:14px}.storage-nav{background:#17202e}.daily-brief{grid-template-columns:1fr;padding:22px 20px}.daily-brief h3{font-size:21px}.brief-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}.brief-metrics span{min-width:0;padding:10px}.horizon-ribbon{grid-template-columns:1fr}.company-pulse-grid,.company-universe{grid-template-columns:1fr 1fr}.company-pulse p{min-height:0}.top-news article{grid-template-columns:30px 1fr}}
 @media(max-width:480px){.company-pulse-grid,.company-universe{grid-template-columns:1fr}}
+
+/* Square company marks: use locally cached official-site favicons with a text fallback. */
+.company-logo{position:relative;width:38px;height:38px;overflow:hidden;border:1px solid #e1e5ea;border-radius:9px;background:#fff;color:#182230}
+.company-logo em{font-style:normal}.company-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px;background:#fff}

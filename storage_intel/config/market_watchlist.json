@@ -46,10 +46,10 @@
     {"symbol":"688432.SS","name":"有研硅","short_name":"有研硅","category":"材料与零部件","role":"半导体硅片","icon":"G","region":"中国大陆"},
     {"symbol":"600584.SS","name":"长电科技","short_name":"长电","category":"封装测试","role":"先进封装 / 存储封测","icon":"JC","region":"中国大陆"},
     {"symbol":"002156.SZ","name":"通富微电","short_name":"通富","category":"封装测试","role":"先进封装 / 存储封测","icon":"TF","region":"中国大陆"},
-    {"symbol":"002185.SZ","name":"华天科技","short_name":"华天","category":"封装测试","role":"封装测试","icon":"HT","region":"中国大陆"}
+    {"symbol":"002185.SZ","name":"华天科技","short_name":"华天","category":"封装测试","role":"封装测试","icon":"HT","region":"中国大陆"},
+    {"symbol":"688825.SS","name":"长鑫科技","short_name":"长鑫","category":"存储原厂","role":"DRAM / DDR5 / LPDDR5X","icon":"CX","region":"中国大陆","homepage":true}
   ],
   "unlisted": [
-    {"symbol":"CXMT","name":"长鑫科技","short_name":"长鑫","category":"存储原厂","role":"DRAM / DDR5 / LPDDR5X","icon":"CX","region":"中国大陆","homepage":true,"status":"未上市"},
     {"symbol":"YMTC","name":"长江存储","short_name":"长江","category":"存储原厂","role":"3D NAND / SSD","icon":"YM","region":"中国大陆","homepage":true,"status":"未上市"},
     {"symbol":"JHICC","name":"福建晋华","short_name":"晋华","category":"存储原厂","role":"DRAM","icon":"JH","region":"中国大陆","status":"未上市"},
     {"symbol":"TOSHIBA-HDD","name":"东芝HDD","short_name":"东芝HDD","category":"HDD与存储系统","role":"HDD","icon":"T","region":"日本","status":"非独立上市"}

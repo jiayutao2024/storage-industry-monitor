@@ -315,7 +315,7 @@ def update_history(path: Path, metrics: list[dict[str, Any]]) -> list[dict[str, 
         if row.get("date") and row.get("metric_id")
     }
     for metric in metrics:
-        if metric.get("price") is None:
+        if metric.get("price") is None or float(metric["price"]) <= 0:
             continue
         observed = metric.get("observed_at", "")[:10]
         by_key[(observed, metric["metric_id"])] = {
@@ -387,7 +387,7 @@ def main() -> int:
         errors.append("本轮公开价格抓取失败，保留最近成功快照。")
 
     history = update_history(root / "data" / "storage_price_history.jsonl", metrics)
-    valid = [row for row in metrics if row.get("price") is not None]
+    valid = [row for row in metrics if row.get("price") is not None and float(row["price"]) > 0]
     fresh = [row for row in valid if row.get("freshness", {}).get("status") == "fresh"]
     up = [row for row in fresh if (row.get("change_pct") or 0) > 0]
     down = [row for row in fresh if (row.get("change_pct") or 0) < 0]

@@ -36,6 +36,9 @@ class StandaloneTests(unittest.TestCase):
             self.assertIn(expected, categories)
         for name in {"力源信息", "商络电子", "长鑫科技", "长江存储"}:
             self.assertIn(name, {row["name"] for row in rows})
+        cxmt = next(row for row in data["domestic"] if row["name"] == "长鑫科技")
+        self.assertEqual(cxmt["symbol"], "688825.SS")
+        self.assertTrue(cxmt["homepage"])
 
     def test_market_history_deduplicates_symbol_date(self):
         quote = {"listed": True, "symbol": "MU", "name": "美光", "short_name": "美光", "category": "存储原厂", "role": "DRAM", "region": "美国", "icon": "M", "price": 100, "change_pct": 1, "volume": 10, "currency": "USD", "trade_date": "2026-08-20", "exchange": "NMS", "source_url": "x"}
@@ -47,10 +50,26 @@ class StandaloneTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["price"], 101)
 
+    def test_market_history_rejects_nonpositive_price(self):
+        quote = {"listed": True, "symbol": "MU", "trade_date": "2026-08-20", "price": 0}
+        with tempfile.TemporaryDirectory() as tmp:
+            rows = runner.update_market_history(Path(tmp) / "market.jsonl", [quote])
+        self.assertEqual(rows, [])
+
+    def test_company_icons_cover_watchlist(self):
+        data = json.loads((ROOT / "storage_intel" / "config" / "market_watchlist.json").read_text(encoding="utf-8"))
+        rows = data["foreign"] + data["domestic"] + data["unlisted"]
+        for row in rows:
+            filename = "".join(ch if ch.isalnum() else "-" for ch in row["symbol"]) + ".png"
+            self.assertTrue((ROOT / "web" / "assets" / "logos" / filename).exists(), row["symbol"])
+
     def test_research_model_lengths(self):
         data = json.loads((ROOT / "data" / "storage_research.json").read_text(encoding="utf-8"))
         for product in ("dram", "nand"):
             self.assertEqual(len(data["models"][product]["base"]["gap_pct"]), 6)
+        shares = data["structural_data"]["enterprise_ssd_vendor_share_q1_2026"]["share_pct"]
+        self.assertAlmostEqual(sum(shares), 100.0, places=1)
+        self.assertGreaterEqual(len(data["metric_catalog"]), 15)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "2026-08-20",
+    "version": "2026-08-21",
     "model_name": "G3 存储供需与投资信号模型",
     "model_path": "暑期答辩存储/03_model/G3_存储供需与投资信号模型.xlsx",
     "boundary": "公开网站仅展示公开事实、第三方统计与研究测算；付费数据库与内部调研不发布。"
@@ -28,12 +28,39 @@
     "effective_bit":"有效bit = WPM × OEE/利用率 × good die/wafer × 容量/die × 产品良率"
   },
   "structural_data": {
-    "hbm_wafer_input": {"years":[2025,2026,2027],"share_pct":[18,22,30],"label":"HBM占前三大DRAM厂wafer input","status":"第三方预测","source_id":"S03"},
+    "hbm_wafer_input": {"years":[2025,2026,2027],"share_pct":[18,22,30],"bit_share_pct":[8,9,13],"label":"HBM占前三大DRAM厂wafer input","status":"第三方预测","source_id":"S03"},
+    "terminal_demand_2026": {"labels":["服务器出货","智能手机产量","笔记本产量"],"display":["+17%","-15%~-20%","约-10%"],"values":[17,-17.5,-10],"status":"第三方预测；手机使用区间中值仅用于绘图","source_id":"S01"},
+    "nand_demand_mix_2026": {"server_bit_share_floor":40,"smartphone_notebook_share_approx":40,"china_bit_output_share_forecast":19,"unit":"%","status":"第三方预测","source_id":"S01"},
     "dram_share_q1_2026": {"labels":["Samsung","SK hynix","Micron","CXMT","Nanya","Others"],"values":[38,29,22,8,2,1],"unit":"收入份额%","status":"第三方统计","source_id":"S08"},
     "hbm_share_q1_2026": {"labels":["SK hynix","Samsung","Micron"],"values":[58,21,21],"unit":"收入份额%","status":"第三方统计","source_id":"S08"},
     "nand_share_q1_2026": {"labels":["Samsung","SK Group","Kioxia","Micron","SanDisk","Others"],"values":[31.6,17.6,13.9,13.9,13.9,9.1],"unit":"收入份额%","status":"第三方统计","source_id":"S09"},
-    "enterprise_ssd": {"periods":["2026Q1","2026E"],"revenue_share_pct":[43,60],"status":"第三方统计/预测","source_id":"S04"}
+    "enterprise_ssd": {"periods":["2026Q1","2026E"],"revenue_share_pct":[43,60],"status":"第三方统计/预测","source_id":"S04"},
+    "enterprise_ssd_vendor_share_q1_2026": {"labels":["Samsung","SK Group","Micron","Kioxia","SanDisk"],"revenue_usd_b":[7.05,4.64,3.09,2.22,1.47],"share_pct":[38.2,25.1,16.7,12.0,8.0],"unit":"收入份额%","status":"根据TrendForce披露收入/18.46bn计算，四舍五入","source_id":"S10"},
+    "enterprise_ssd_revenue_anchors": {"periods":["2024Q4","2025Q4","2026Q1"],"revenue_usd_b":[7.34,10.8,18.46],"unit":"十亿美元","status":"季度离散锚点，不补齐缺失季度","source_ids":["S11","S12","S10"]},
+    "cxmt_operating": {"years":[2023,2024,2025],"utilization_pct":[87.06,92.46,95.73],"capex_cny_b":[43.658,71.230,49.739],"status":"监管披露","source_id":"S06"},
+    "cxmt_share": {"periods":["2025Q1","2026Q1"],"revenue_share_pct":[3,8],"unit":"DRAM收入份额%","status":"第三方统计","source_id":"S13"},
+    "industry_anchors": {"dram_revenue_q1_2026_usd_b":97,"dram_contract_qoq_q1_2026_low":93,"dram_contract_qoq_q1_2026_high":98,"nand_top5_revenue_q1_2026_usd_b":38.9,"enterprise_ssd_contract_qoq_q1_2026":80,"server_nand_bit_share_floor":40,"status":"第三方公开统计/预测","source_ids":["S09","S10","S14"]}
   },
+  "metric_catalog": [
+    {"category":"行业规模","metric":"DRAM 行业收入","period":"2026Q1","value":"970 亿美元","frequency":"季度","history":"季度锚点","source_id":"S14"},
+    {"category":"价格","metric":"传统 DRAM 合约价环比","period":"2026Q1","value":"+93%~+98%","frequency":"月度/季度","history":"公开锚点 + 日报报价","source_id":"S14"},
+    {"category":"供需","metric":"DRAM 基准供需缺口","period":"2026E","value":"-2.5%","frequency":"季度复核","history":"2025-2030E 模型","source_id":"MODEL"},
+    {"category":"技术/供给","metric":"HBM wafer input 占比","period":"2026E","value":"22%","frequency":"季度","history":"2025-2027E","source_id":"S03"},
+    {"category":"技术/供给","metric":"HBM bit 贡献占比","period":"2026E","value":"9%","frequency":"季度","history":"2025-2027E","source_id":"S03"},
+    {"category":"行业规模","metric":"NAND 前五大原厂收入","period":"2026Q1","value":">389 亿美元","frequency":"季度","history":"季度锚点","source_id":"S09"},
+    {"category":"产品结构","metric":"企业级 SSD 收入","period":"2026Q1","value":"184.6 亿美元","frequency":"季度","history":"2024Q4/2025Q4/2026Q1","source_id":"S10"},
+    {"category":"价格","metric":"企业级 SSD 合约价环比","period":"2026Q1","value":"+80%","frequency":"季度","history":"季度锚点","source_id":"S10"},
+    {"category":"产品结构","metric":"企业级 SSD 占 NAND 收入","period":"2026Q1","value":"43%","frequency":"季度","history":"2026Q1 + 2026E","source_id":"S04"},
+    {"category":"需求","metric":"服务器占 NAND bit 需求","period":"2026E","value":">40%","frequency":"季度","history":"预测锚点","source_id":"S01"},
+    {"category":"需求","metric":"服务器出货量同比","period":"2026E","value":"+17%","frequency":"季度","history":"年度预测锚点","source_id":"S01"},
+    {"category":"需求","metric":"智能手机产量同比","period":"2026E","value":"-15%~-20%","frequency":"季度","history":"年度预测锚点","source_id":"S01"},
+    {"category":"国产化","metric":"中国 NAND bit 产出占比","period":"2026E","value":"约 19%","frequency":"季度","history":"预测锚点","source_id":"S01"},
+    {"category":"公司","metric":"长鑫 DRAM 收入份额","period":"2026Q1","value":"8%","frequency":"季度","history":"2025Q1-2026Q1","source_id":"S13"},
+    {"category":"公司","metric":"长鑫产能利用率","period":"2025","value":"95.73%","frequency":"年度/招股书更新","history":"2023-2025","source_id":"S06"},
+    {"category":"公司","metric":"长鑫资本开支","period":"2025","value":"497.39 亿元","frequency":"年度/招股书更新","history":"2023-2025","source_id":"S06"},
+    {"category":"市场","metric":"覆盖公司股价与成交量","period":"最近交易日","value":"44 家上市公司","frequency":"每日 05:00/17:00","history":"近 1 年日频","source_id":"YAHOO"},
+    {"category":"价格","metric":"DRAM/NAND 公开报价篮子","period":"最近更新","value":"按产品原单位","frequency":"每日 05:00/17:00","history":"不以 0 填补缺失","source_id":"PUBLIC"}
+  ],
   "capacity_timeline": [
     {"date":"2026","company":"全球原厂","milestone":"资本开支与设备订单增加","meaning":"不等于当期有效供给；先观察设备搬入、验收、良率与产品认证。","status":"观察"},
     {"date":"2027H2","company":"NAND行业","milestone":"基准情景总量趋于平衡","meaning":"高端eSSD仍可能因控制器、固件、QoS与客户认证而结构性紧张。","status":"模型"},
@@ -73,6 +100,14 @@
     {"id":"S05","title":"M17 NAND投资计划","publisher":"SK hynix","date":"2026-07-02","url":"https://news.skhynix.com/en/fact-07/","tier":1,"use":"新增产能时点"},
     {"id":"S06","title":"长鑫科技招股书","publisher":"上海证券交易所","date":"2026-05-27","url":"https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002170_20260527_23QQ.pdf","tier":1,"use":"产品、份额与扩产"},
     {"id":"S08","title":"Global DRAM revenue and shares Q1 2026","publisher":"Counterpoint","date":"2026-05-26","url":"https://counterpointresearch.com/en/insights/global-dram-revenue-surges-to-near-dollar-100-billion-mark-in-q1-2026","tier":2,"use":"DRAM/HBM格局"},
-    {"id":"S09","title":"NAND Flash revenue ranking Q1 2026","publisher":"TrendForce","date":"2026-05","url":"https://www.trendforce.com/","tier":2,"use":"NAND格局"}
+    {"id":"S09","title":"NAND Flash revenue ranking Q1 2026","publisher":"TrendForce","date":"2026-05-25","url":"https://www.trendforce.com/presscenter/news/20260525-13058.html","tier":2,"use":"NAND格局与市场收入"},
+    {"id":"S10","title":"1Q26 enterprise SSD revenue and vendor ranking","publisher":"TrendForce","date":"2026-06-11","url":"https://www.trendforce.com/presscenter/news/20260611-13092.html","tier":2,"use":"企业级SSD收入、价格与厂商份额"},
+    {"id":"S11","title":"4Q24 enterprise SSD supplier revenue","publisher":"TrendForce","date":"2025-03-06","url":"https://www.trendforce.com/presscenter/news/20250306-12507.html","tier":2,"use":"企业级SSD季度收入锚点"},
+    {"id":"S12","title":"4Q25 enterprise SSD revenue ranking","publisher":"TrendForce","date":"2026-02-25","url":"https://www.trendforce.com/research/download/RP260225SK","tier":2,"use":"企业级SSD季度收入锚点"},
+    {"id":"S13","title":"Global DRAM and HBM market share quarterly","publisher":"Counterpoint","date":"2026-06-01","url":"https://korea.counterpointresearch.com/global-dram-and-hbm-market-share-quarterly/","tier":2,"use":"长鑫DRAM收入份额序列"},
+    {"id":"S14","title":"Rapid contract price surge drives 1Q26 DRAM industry","publisher":"TrendForce","date":"2026-06-01","url":"https://www.trendforce.com/presscenter/news/20260601-13070.html","tier":2,"use":"DRAM收入、价格与厂商份额"},
+    {"id":"S15","title":"长鑫科技上市交易公告","publisher":"上海证券交易所","date":"2026-07-24","url":"https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260724_10826610.shtml","tier":1,"use":"证券代码与上市日期"},
+    {"id":"YAHOO","title":"覆盖公司历史行情","publisher":"Yahoo Finance","date":"每日","url":"https://finance.yahoo.com/markets/stocks/","tier":3,"use":"44家上市公司本币复权收盘价与成交量"},
+    {"id":"PUBLIC","title":"DRAM与SSD公开报价页","publisher":"TrendForce","date":"每日观察","url":"https://www.trendforce.com/price/dram/module_spot","tier":2,"use":"逐规格公开价格锚点；原单位保留"}
   ]
 }
