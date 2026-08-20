@@ -62,6 +62,9 @@ class StandaloneTests(unittest.TestCase):
         for row in rows:
             filename = "".join(ch if ch.isalnum() else "-" for ch in row["symbol"]) + ".png"
             self.assertTrue((ROOT / "web" / "assets" / "logos" / filename).exists(), row["symbol"])
+        manifest = json.loads((ROOT / "web" / "assets" / "logos" / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual({row["symbol"] for row in rows}, set(manifest))
+        self.assertNotIn("text_badge", {item["type"] for item in manifest.values()})
 
     def test_research_model_lengths(self):
         data = json.loads((ROOT / "data" / "storage_research.json").read_text(encoding="utf-8"))
@@ -70,6 +73,26 @@ class StandaloneTests(unittest.TestCase):
         shares = data["structural_data"]["enterprise_ssd_vendor_share_q1_2026"]["share_pct"]
         self.assertAlmostEqual(sum(shares), 100.0, places=1)
         self.assertGreaterEqual(len(data["metric_catalog"]), 15)
+
+    def test_price_cycle_ranges_are_well_formed(self):
+        data = json.loads((ROOT / "data" / "storage_research.json").read_text(encoding="utf-8"))
+        for product in ("dram", "nand"):
+            cycle = data["contract_price_cycle"][product]
+            self.assertEqual(len(cycle["periods"]), len(cycle["low_pct"]))
+            self.assertEqual(len(cycle["periods"]), len(cycle["high_pct"]))
+            self.assertTrue(all(low <= high for low, high in zip(cycle["low_pct"], cycle["high_pct"])))
+
+    def test_industry_tree_explains_abbreviations(self):
+        data = json.loads((ROOT / "data" / "storage_research.json").read_text(encoding="utf-8"))
+        groups = data["industry_tree"]
+        self.assertGreaterEqual(len(groups), 5)
+        branches = [branch for group in groups for branch in group["branches"]]
+        self.assertGreaterEqual(len(branches), 20)
+        for branch in branches:
+            self.assertTrue(branch["name"])
+            self.assertTrue(branch["full"])
+            self.assertTrue(branch["what"])
+            self.assertTrue(branch["chain"])
 
 
 if __name__ == "__main__":

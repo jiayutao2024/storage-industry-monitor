@@ -41,6 +41,11 @@
     "cxmt_share": {"periods":["2025Q1","2026Q1"],"revenue_share_pct":[3,8],"unit":"DRAM收入份额%","status":"第三方统计","source_id":"S13"},
     "industry_anchors": {"dram_revenue_q1_2026_usd_b":97,"dram_contract_qoq_q1_2026_low":93,"dram_contract_qoq_q1_2026_high":98,"nand_top5_revenue_q1_2026_usd_b":38.9,"enterprise_ssd_contract_qoq_q1_2026":80,"server_nand_bit_share_floor":40,"status":"第三方公开统计/预测","source_ids":["S09","S10","S14"]}
   },
+  "contract_price_cycle": {
+    "dram": {"periods":["2025Q2","2025Q3","2025Q4","2026Q1","2026Q2E","2026Q3E"],"low_pct":[-5,10,45,93,58,13],"high_pct":[0,15,50,98,63,18],"definition":"传统DRAM整体合约价季度环比；不含HBM","source_ids":["S19","S20","S21","S14","S22","S23"]},
+    "nand": {"periods":["2025Q3","2025Q4","2026Q1","2026Q2E","2026Q3E"],"low_pct":[5,5,33,70,10],"high_pct":[10,10,38,75,15],"definition":"NAND Flash整体合约价季度环比","source_ids":["S24","S25","S26","S22","S23"]},
+    "note":"区间来自各期公开调查或预测；E为预测。不同产品的现货价格、模组报价和零售价格不得与该整体合约价直接拼接。"
+  },
   "metric_catalog": [
     {"category":"行业规模","metric":"DRAM 行业收入","period":"2026Q1","value":"970 亿美元","frequency":"季度","history":"季度锚点","source_id":"S14"},
     {"category":"价格","metric":"传统 DRAM 合约价环比","period":"2026Q1","value":"+93%~+98%","frequency":"月度/季度","history":"公开锚点 + 日报报价","source_id":"S14"},
@@ -72,6 +77,38 @@
     {"family":"非易失性半导体","products":["3D NAND","Client SSD","Enterprise SSD","eMMC/UFS","NOR Flash"],"drivers":"AI数据湖、KV Cache、企业级认证、终端容量"},
     {"family":"其他介质与互连","products":["HDD","磁带","CXL内存扩展","SCM/MRAM/ReRAM"],"drivers":"冷温热数据分层、容量成本、延迟与持久性"},
     {"family":"设备材料与服务","products":["前道设备","材料/零部件","封测","主控/接口","模组/分销"],"drivers":"资本开支、国产验证、订单与收入确认"}
+  ],
+  "industry_tree": [
+    {"group":"易失性存储","english":"Volatile Memory","role":"断电后数据消失，承担CPU、GPU正在计算的数据；越靠近处理器，延迟越低、容量越小、单位容量成本越高。","branches":[
+      {"name":"SRAM","full":"Static Random-Access Memory｜静态随机存取存储器","what":"不需要刷新，速度最快但芯片面积大，主要用于处理器片上缓存。","children":"L1/L2/L3 Cache（一级/二级/三级缓存）、eSRAM（Embedded SRAM，嵌入式SRAM）","chain":"CPU/GPU设计 → 先进制程代工 → 处理器芯片"},
+      {"name":"DRAM","full":"Dynamic Random-Access Memory｜动态随机存取存储器","what":"需要周期刷新，是PC、手机、服务器和AI系统的主工作内存。","children":"DDR（Double Data Rate，双倍数据速率）、LPDDR（Low-Power DDR，低功耗内存）、GDDR（Graphics DDR，图形内存）、HBM（High Bandwidth Memory，高带宽内存）","chain":"DRAM晶圆 → 颗粒封装测试 → DIMM/移动封装/HBM堆叠 → 服务器与终端"},
+      {"name":"DDR与DIMM","full":"DDR + Dual In-Line Memory Module｜双列直插内存模组","what":"DDR4向DDR5迁移，DDR6处于下一代标准与产品准备期；DIMM把多颗DRAM和接口芯片装在PCB上。","children":"UDIMM（桌面PC）、SODIMM（笔记本）、RDIMM（服务器）、MRDIMM（Multiplexed Rank DIMM，高带宽服务器模组）","chain":"原厂颗粒 + RCD/DB/MRCD/MDB接口芯片 + PCB/模组"},
+      {"name":"HBM","full":"High Bandwidth Memory｜高带宽内存","what":"多层DRAM垂直堆叠并以超宽接口连接GPU/ASIC，核心价值是带宽、能效和封装协同。","children":"HBM3E→HBM4；8Hi/12Hi→16Hi；TSV（Through-Silicon Via，硅通孔）、Base Die（基础逻辑裸片）、Hybrid Bonding（混合键合）","chain":"DRAM前道 → TSV/减薄/键合 → HBM堆叠 → 2.5D/3D先进封装 → AI加速器"}
+    ]},
+    {"group":"非易失性半导体存储","english":"Non-Volatile Memory, NVM","role":"断电后保留数据；Flash是商业规模最大的分支，NAND负责容量，NOR负责快速随机读取和固件。","branches":[
+      {"name":"NAND Flash","full":"Not-AND Flash｜与非型闪存","what":"以低bit成本提供大容量，是SSD、UFS、eMMC和存储卡的核心介质。","children":"SLC/MLC/TLC/QLC/PLC分别每个Cell存1/2/3/4/5 bit；3D NAND通过垂直堆叠提升密度","chain":"NAND晶圆 → 裸片/封装 → 控制器与固件 → SSD或Managed NAND"},
+      {"name":"NOR Flash","full":"Not-OR Flash｜或非型闪存","what":"容量较小但随机读取快，可执行就地读取XIP（Execute In Place），用于BIOS、MCU、汽车和IoT固件。","children":"SPI NOR（Serial Peripheral Interface NOR，串行接口NOR）","chain":"NOR晶圆/封装 → MCU/SoC外围固件存储 → 汽车、工业与消费电子"},
+      {"name":"SSD","full":"Solid-State Drive｜固态硬盘","what":"不是单颗NAND，而是NAND、Controller控制器、Firmware固件、Cache缓存和Interface接口组成的系统产品。","children":"Client SSD（客户端）、Enterprise SSD（企业级）；SATA→PCIe；NVMe（Non-Volatile Memory Express）协议","chain":"NAND + 主控 + DRAM缓存 + 固件算法 + 模组封装 + 客户认证"},
+      {"name":"UFS / eMMC","full":"Universal Flash Storage / embedded MultiMediaCard｜通用闪存/嵌入式多媒体卡","what":"把NAND与控制器封装成可直接使用的Managed NAND，主要用于手机、汽车与嵌入式设备。","children":"eMMC偏成熟应用；UFS 3.x/4.x强调带宽、能效和多队列","chain":"NAND颗粒 → 控制器/固件 → MCP/BGA封装 → 手机与嵌入式客户"},
+      {"name":"HBF","full":"High Bandwidth Flash｜高带宽闪存","what":"以高并行方式把3D NAND靠近AI处理器，定位于HBM与传统SSD之间；仍处标准化和生态导入早期。","children":"高并行NAND堆叠、控制器、封装与互连生态","chain":"NAND原厂 → HBF堆叠/主控 → AI平台验证"},
+      {"name":"新型NVM","full":"Emerging Non-Volatile Memory｜新型非易失性存储","what":"试图填补DRAM与NAND之间的延迟、耐久、功耗或持久性空档。","children":"MRAM（Magnetoresistive RAM，磁阻存储）、ReRAM（Resistive RAM，阻变存储）、PCM（Phase-Change Memory，相变存储）、FeRAM（Ferroelectric RAM，铁电存储）","chain":"材料与器件研发 → 嵌入式/独立芯片 → 特定工业和计算场景"}
+    ]},
+    {"group":"内存扩展与AI架构","english":"Memory Expansion / AI Memory Architecture","role":"AI系统不仅选择颗粒，还要解决CPU、GPU和加速器之间的扩容、共享、池化与数据搬运。","branches":[
+      {"name":"CXL","full":"Compute Express Link｜计算快速互连","what":"基于PCIe物理层的缓存一致性互连，可连接CPU、加速器和扩展内存。","children":"CXL Memory Expander（内存扩展器）、Memory Pooling（内存池化）、Memory Tiering（内存分层）","chain":"CPU平台 → CXL控制器 → DDR内存扩展模组 → 服务器软件生态"},
+      {"name":"SCM","full":"Storage-Class Memory｜存储级内存","what":"泛指性能与成本位于DRAM和NAND之间的持久数据层，不对应单一材料。","children":"持久内存、低延迟SSD和新型NVM均可能承担部分SCM角色","chain":"介质 + 控制器 + 系统软件 → 分层存储"},
+      {"name":"PIM / CIM","full":"Processing/Compute-In-Memory｜存内处理/存内计算","what":"把部分计算放到存储阵列内部或附近，减少数据搬运的延迟和能耗。","children":"Near-Memory Compute、DRAM-PIM、ReRAM-CIM","chain":"器件/架构 → 编译器和软件栈 → AI推理或高带宽计算"}
+    ]},
+    {"group":"非半导体大容量存储","english":"Mass-Capacity Storage","role":"面向温数据、冷数据与长期归档，核心比较单位容量成本、功耗、可靠性和访问时延。","branches":[
+      {"name":"HDD","full":"Hard Disk Drive｜机械硬盘","what":"磁头在旋转磁盘上读写，是数据中心近线大容量存储核心。","children":"PMR/SMR→HAMR（Heat-Assisted Magnetic Recording，热辅助磁记录）/MAMR（Microwave-Assisted Magnetic Recording，微波辅助磁记录）","chain":"磁介质/磁头/盘片 → HDD整机 → 存储系统"},
+      {"name":"Tape","full":"Magnetic Tape｜磁带","what":"顺序访问但单位容量成本和离线能耗极低，适合超冷数据、备份和长期归档。","children":"LTO（Linear Tape-Open，线性磁带开放标准）","chain":"磁带介质 → 磁带机/库 → 云归档与灾备"},
+      {"name":"MED","full":"Magneto-Electric Disk｜磁电存储系统","what":"Flash高速层与磁介质容量层组合的系统级方案，不是一种存储芯片。","children":"高速缓存层、磁介质容量层、控制器和系统软件","chain":"介质/控制器/设备 → 分层存储系统 → 温冷数据场景"}
+    ]},
+    {"group":"上游设备、材料与封测","english":"Semiconductor Equipment / Materials / Packaging","role":"扩产、制程微缩、3D NAND层数提升和HBM堆叠共同提高设备、材料、量测与先进封装价值量。","branches":[
+      {"name":"前道设备","full":"Etch / Deposition / Cleaning / CMP","what":"刻蚀、沉积、清洗和化学机械抛光决定高深宽比结构、多层薄膜与晶圆平坦度。","children":"Etch刻蚀、CVD/PVD/ALD沉积、Wet Cleaning湿法清洗、CMP（Chemical Mechanical Planarization）","chain":"设备验证 → 搬入 → 验收 → 量产利用率"},
+      {"name":"材料与零部件","full":"Process Materials / Components","what":"包括电子化学品、靶材、硅片、石英/碳化硅部件和抛光材料。","children":"光刻胶、清洗液、电镀液、CMP材料、高纯靶材、硅部件","chain":"送样 → 客户验证 → 批量采购 → 份额提升"},
+      {"name":"量测与检测","full":"Metrology / Inspection","what":"制程越先进、层数越高，缺陷检测、关键尺寸量测和良率控制越重要。","children":"缺陷检测、薄膜量测、关键尺寸量测、测试设备","chain":"研发线导入 → 产线验证 → 重复订单"},
+      {"name":"封装与测试","full":"Packaging / Testing","what":"HBM、Chiplet和高端SSD推动TSV、减薄、键合、2.5D/3D封装及可靠性测试。","children":"TSV、Micro-bump微凸点、Hybrid Bonding混合键合、Interposer中介层、Burn-in老化测试","chain":"晶圆级封装 → 芯片堆叠 → 系统级封装 → 客户认证"}
+    ]}
   ],
   "companies": [
     {"name":"长鑫科技","ticker":"688825","region":"国内","layer":"DRAM原厂","exposure":"DRAM / DDR5 / LPDDR5X","winner_traits":"先进制程量产、客户层级、产品结构与资本纪律","signals":"DDR5/LPDDR5X收入占比；服务器客户；有效bit；扩产折旧","role":"核心成长+周期"},
@@ -108,6 +145,14 @@
     {"id":"S14","title":"Rapid contract price surge drives 1Q26 DRAM industry","publisher":"TrendForce","date":"2026-06-01","url":"https://www.trendforce.com/presscenter/news/20260601-13070.html","tier":2,"use":"DRAM收入、价格与厂商份额"},
     {"id":"S15","title":"长鑫科技上市交易公告","publisher":"上海证券交易所","date":"2026-07-24","url":"https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260724_10826610.shtml","tier":1,"use":"证券代码与上市日期"},
     {"id":"YAHOO","title":"覆盖公司历史行情","publisher":"Yahoo Finance","date":"每日","url":"https://finance.yahoo.com/markets/stocks/","tier":3,"use":"44家上市公司本币复权收盘价与成交量"},
-    {"id":"PUBLIC","title":"DRAM与SSD公开报价页","publisher":"TrendForce","date":"每日观察","url":"https://www.trendforce.com/price/dram/module_spot","tier":2,"use":"逐规格公开价格锚点；原单位保留"}
+    {"id":"PUBLIC","title":"DRAM与SSD公开报价页","publisher":"TrendForce","date":"每日观察","url":"https://www.trendforce.com/price/dram/module_spot","tier":2,"use":"逐规格公开价格锚点；原单位保留"},
+    {"id":"S19","title":"2Q25传统DRAM合约价预计环比-5%至持平","publisher":"TrendForce","date":"2025-03-25","url":"https://www.trendforce.com/presscenter/news/20250325-12528.html","tier":2,"use":"DRAM季度价格区间"},
+    {"id":"S20","title":"3Q25传统DRAM合约价预计环比+10%至+15%","publisher":"TrendForce","date":"2025-07-07","url":"https://www.trendforce.com/presscenter/news/20250707-12633.html","tier":2,"use":"DRAM季度价格区间"},
+    {"id":"S21","title":"4Q25传统DRAM合约价实际环比+45%至+50%","publisher":"TrendForce","date":"2026-02-26","url":"https://www.trendforce.com/presscenter/news/20260226-12937.html","tier":2,"use":"DRAM季度价格区间"},
+    {"id":"S22","title":"2Q26传统DRAM与NAND合约价预测","publisher":"TrendForce","date":"2026-03-31","url":"https://www.trendforce.com/presscenter/news/20260331-12995.html","tier":2,"use":"DRAM/NAND季度价格区间"},
+    {"id":"S23","title":"3Q26传统DRAM与NAND合约价预测","publisher":"TrendForce","date":"2026-07-03","url":"https://www.trendforce.com/presscenter/news/20260703-13134.html","tier":2,"use":"DRAM/NAND季度价格区间"},
+    {"id":"S24","title":"3Q25 NAND Flash整体合约价预计环比+5%至+10%","publisher":"TrendForce","date":"2025-07-09","url":"https://www.trendforce.com/presscenter/news/20250709-12638.html","tier":2,"use":"NAND季度价格区间"},
+    {"id":"S25","title":"4Q25 NAND Flash整体合约价预计环比+5%至+10%","publisher":"TrendForce","date":"2025-09-25","url":"https://www.trendforce.com/presscenter/news/20250925-12736.html","tier":2,"use":"NAND季度价格区间"},
+    {"id":"S26","title":"1Q26传统DRAM与NAND合约价预测","publisher":"TrendForce","date":"2026-01-05","url":"https://www.trendforce.com/presscenter/news/20260105-12860.html","tier":2,"use":"NAND季度价格区间"}
   ]
 }

@@ -8,4 +8,6 @@ storage_intel/inbox/*.csv
 .edge-profile*/
 qa_*.png
 qa/
+logo_contact*.png
+logo_qa/
 .qa_server_pid
