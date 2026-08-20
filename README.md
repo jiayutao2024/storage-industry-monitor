@@ -6,7 +6,7 @@
 
 - 每日 05:00 与 17:00（Asia/Shanghai）由 GitHub Actions 自动更新。
 - 新闻历史、价格历史和公司行情历史随每次运行增量保存。
-- 页面访问口令为 `8888`。该口令是静态站点访问门槛，不构成服务端加密。
+- 页面通过 GitHub Pages 公开访问，不设置前置密码。
 
 ## 页面
 
@@ -26,4 +26,4 @@ python scripts/collect_storage_prices.py --project-root .
 python scripts/build_site.py --project-root .
 ```
 
-站点产物位于 `_site/`。GitHub Pages 默认可能公开可访问；真正的私有 Pages 访问控制仅适用于符合条件的 GitHub Enterprise Cloud 组织。
+站点产物位于 `_site/`。

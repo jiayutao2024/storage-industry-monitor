@@ -4,33 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="存储产业短中长期趋势、价格、供需、公司和事件监测">
   <link rel="icon" href="data:,">
   <title>存储产业监测</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="storage.css">
 </head>
-<body class="locked">
-  <section class="access-gate" id="access-gate" aria-labelledby="gate-title">
-    <div class="gate-panel">
-      <div class="gate-symbol" aria-hidden="true"><span></span><span></span><span></span></div>
-      <p class="gate-eyebrow">STORAGE INTELLIGENCE</p>
-      <h1 id="gate-title">存储产业监测</h1>
-      <p class="gate-copy">短期价格与库存 · 中期供需与有效bit · 长期国产化与价值迁移</p>
-      <form id="access-form">
-        <label for="access-password">访问密码</label>
-        <div class="gate-input-row">
-          <input id="access-password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="请输入密码" autofocus>
-          <button type="submit">进入看板</button>
-        </div>
-        <p class="gate-error" id="gate-error" role="alert"></p>
-      </form>
-      <p class="gate-note">仅供内部研究使用 · 数据与自动判断需回到原始来源核验</p>
-    </div>
-  </section>
-
-  <div class="site" id="site" aria-hidden="true">
+<body>
+  <div class="site" id="site">
     <header class="masthead">
       <div class="masthead-inner">
         <a class="brand" href="?page=overview" aria-label="返回今日总览">
@@ -38,7 +19,6 @@
           <span><b>存储产业监测</b><small>STORAGE INTELLIGENCE</small></span>
         </a>
         <div class="header-status"><span class="live-dot"></span><span id="header-freshness">载入中</span></div>
-        <button class="lock-button" id="lock-button" type="button">锁定</button>
       </div>
     </header>
 

@@ -15,11 +15,12 @@ runner_spec.loader.exec_module(runner)
 
 
 class StandaloneTests(unittest.TestCase):
-    def test_password_gate_and_storage_only_title(self):
+    def test_public_storage_only_title(self):
         html = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
         app = (ROOT / "web" / "app.js").read_text(encoding="utf-8")
-        self.assertIn('id="access-gate"', html)
-        self.assertIn("PASSWORD_SHA256", app)
+        self.assertNotIn('id="access-gate"', html)
+        self.assertNotIn("PASSWORD_SHA256", app)
+        self.assertIn("loadDashboard();", app)
         self.assertNotIn("AI 与算力", html)
 
     def test_schedule_is_twice_daily(self):
