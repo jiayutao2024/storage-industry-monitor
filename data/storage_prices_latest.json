@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-30T06:50:11+08:00",
+    "generated_at": "2026-08-30T22:01:18+08:00",
     "scope": "TrendForce公开价格页当前快照",
     "license_boundary": "不抓取会员历史下载；历史仅由本项目每日公开快照自行积累。",
     "unit_policy": "不同报价类型不混加；单位显示为官网报价单位。"
@@ -28,14 +28,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-28T18:10+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 1,
+        "age_days": 2,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -53,14 +53,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-28T18:10+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 1,
+        "age_days": 2,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -78,14 +78,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-17T14:40+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 12,
+        "age_days": 13,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -103,14 +103,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-06-30T11:00+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 60,
+        "age_days": 61,
         "allowed_days": 100
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -128,14 +128,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-17T14:40+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 12,
+        "age_days": 13,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -153,14 +153,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-17T14:40+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 12,
+        "age_days": 13,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -178,14 +178,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-17T14:40+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 12,
+        "age_days": 13,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -203,14 +203,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-17T14:40+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 12,
+        "age_days": 13,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -228,14 +228,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-06-30T10:00+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 60,
+        "age_days": 61,
         "allowed_days": 100
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -253,14 +253,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-28T10:30+08:00",
-      "collected_at": "2026-08-30T06:50:11+08:00",
+      "collected_at": "2026-08-30T22:01:18+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 1,
+        "age_days": 2,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
