@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-01T08:09:11+08:00",
+    "generated_at": "2026-09-01T21:44:03+08:00",
     "scope": "TrendForce公开价格页当前快照",
     "license_boundary": "不抓取会员历史下载；历史仅由本项目每日公开快照自行积累。",
     "unit_policy": "不同报价类型不混加；单位显示为官网报价单位。"
@@ -8,11 +8,11 @@
   "summary": {
     "metric_count": 10,
     "fresh_count": 10,
-    "up_count": 8,
+    "up_count": 9,
     "flat_count": 0,
-    "down_count": 2,
-    "up_breadth_pct": 80.0,
-    "history_points": 47
+    "down_count": 1,
+    "up_breadth_pct": 90.0,
+    "history_points": 49
   },
   "metrics": [
     {
@@ -21,14 +21,14 @@
       "segment": "DDR5",
       "item": "DDR5 16Gb (2Gx8) 4800/5600",
       "quote_type": "现货",
-      "price": 53.917,
+      "price": 54.083,
       "high": 67.5,
-      "low": 37.2,
-      "change_pct": -0.03,
+      "low": 37.5,
+      "change_pct": 0.31,
       "currency": "USD",
       "unit": "USD/官网报价单位",
-      "observed_at": "2026-08-31T18:10+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "observed_at": "2026-09-01T18:10+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
@@ -46,14 +46,14 @@
       "segment": "DDR4",
       "item": "DDR4 16Gb (2Gx8) 3200",
       "quote_type": "现货",
-      "price": 91.78,
-      "high": 116.0,
+      "price": 92.024,
+      "high": 117.0,
       "low": 42.2,
-      "change_pct": 0.53,
+      "change_pct": 0.27,
       "currency": "USD",
       "unit": "USD/官网报价单位",
-      "observed_at": "2026-08-31T18:10+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "observed_at": "2026-09-01T18:10+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
@@ -78,14 +78,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-24T14:40+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 7,
+        "age_days": 8,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -103,14 +103,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-07-31T15:00+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 31,
+        "age_days": 32,
         "allowed_days": 100
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -128,14 +128,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-24T14:40+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/dram/module_spot",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 7,
+        "age_days": 8,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -153,14 +153,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-24T14:40+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 7,
+        "age_days": 8,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -178,14 +178,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-24T14:40+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 7,
+        "age_days": 8,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -203,14 +203,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-24T14:40+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 7,
+        "age_days": 8,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -228,14 +228,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-07-31T09:00+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 31,
+        "age_days": 32,
         "allowed_days": 100
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -253,14 +253,14 @@
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "observed_at": "2026-08-28T10:30+08:00",
-      "collected_at": "2026-09-01T08:09:11+08:00",
+      "collected_at": "2026-09-01T21:44:03+08:00",
       "source_name": "TrendForce公开价格页",
       "source_url": "https://www.trendforce.com/price/flash/ssd_street",
       "source_tier": 2,
       "evidence_status": "public_snapshot",
       "freshness": {
         "status": "fresh",
-        "age_days": 3,
+        "age_days": 4,
         "allowed_days": 21
       },
       "note": "仅保存公开页面当前快照；芯片、模组、晶圆与整盘报价单位不同，不做直接加总。"
@@ -827,6 +827,30 @@
       "quote_type": "现货",
       "price": 53.917,
       "change_pct": -0.03,
+      "currency": "USD",
+      "unit": "USD/官网报价单位",
+      "source_url": "https://www.trendforce.com/price/dram/module_spot"
+    },
+    {
+      "date": "2026-09-01",
+      "metric_id": "storage_dram_ddr4_16gb_spot",
+      "product": "DRAM",
+      "segment": "DDR4",
+      "quote_type": "现货",
+      "price": 92.024,
+      "change_pct": 0.27,
+      "currency": "USD",
+      "unit": "USD/官网报价单位",
+      "source_url": "https://www.trendforce.com/price/dram/module_spot"
+    },
+    {
+      "date": "2026-09-01",
+      "metric_id": "storage_dram_ddr5_16gb_spot",
+      "product": "DRAM",
+      "segment": "DDR5",
+      "quote_type": "现货",
+      "price": 54.083,
+      "change_pct": 0.31,
       "currency": "USD",
       "unit": "USD/官网报价单位",
       "source_url": "https://www.trendforce.com/price/dram/module_spot"
