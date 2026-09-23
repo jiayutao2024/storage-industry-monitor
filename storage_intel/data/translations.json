@@ -473,5 +473,9 @@
   "1fd5873c99902468b0cfbb9024adf9aaaf65748c6018695f6ad6314f65ace661": "AMD 在 GPU 驱动程序中添加 GDDR7 支持，为 RDNA 5 发布做准备",
   "4c8529249ceeaf579b5476e1553fc23b8fcefe1acb8451e80a143c3e9b88165e": "三星加速HBM4量产！ Bernstein 预测，随着内存市场情绪持续升温，第三季度 HBM 收入将环比增长 72%。",
   "d907cfe106ef13bef6ede92123a6f2f947775c17f6f653f5f80f231467bbad8f": "美光 2 GB GDDR7 内存芯片寿命终止，RTX 50 系列完全依赖三星和 SK 海力士",
-  "7471a57d74207af0e8570619f5c0f56940a72363b58b0ce7f9193cd0731d6dd8": "4 GB 和 6 GB GDDR7 芯片可为下一代 Nvidia 显卡提供动力"
+  "7471a57d74207af0e8570619f5c0f56940a72363b58b0ce7f9193cd0731d6dd8": "4 GB 和 6 GB GDDR7 芯片可为下一代 Nvidia 显卡提供动力",
+  "b575cac0aabef58e45cfb63bccc6f3377fb4569e8aef8e02cee7265da8b249b9": "3 位消息人士称，长江存储准备 DRAM，长鑫存储紧追 NAND [2026]",
+  "02efc0b8056a1c186c2579a8742e56235b945ce67280bb046ec76aa683f6aef5": "长鑫存储新型G5 DRAM进入量产，每晶圆裸片数量增加50%",
+  "85e0b481ade38572bd07fc858863957b51ec4316f31e96114a3cccc87b7995c7": "AMD 开始在其 Linux GPU 驱动程序中添加 GDDR7 支持——这一变化可能预示着下一代 Radeon GPU 将使用先进的内存标准",
+  "3e88d2bbfbea967f953f956bf00f1eca1dc09b788d5912fa04b0deb038ea5720": "随着AI推理的扩展，eSSD需求激增...三星、SK海力士加剧第四季度订单竞争"
 }
